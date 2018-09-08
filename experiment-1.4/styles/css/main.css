@@ -1,0 +1,12 @@
+/* Exercise 1 **/
+.palette {
+  display: flex; }
+
+.swatch {
+  width: 100px;
+  height: 100px;
+  background-color: grey;
+  font-size: 12px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  border-radius: 2px; }

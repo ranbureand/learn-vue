@@ -17,6 +17,8 @@
   <script src="scripts/js/hsluv.min.js"></script>
 
   <div id="exercise">
+    <input type="number" step="1" min="0" max="360" v-model.number="interpolations">
+    <hr>
     <input type="number" step="1" min="0" max="360" v-model.number="c1.HSL[0]" v-on:input="translateHSL('c1')">
     <input type="number" step="1" min="0" max="100" v-model.number="c1.HSL[1]" v-on:input="translateHSL('c1')">
     <input type="number" step="1" min="0" max="100" v-model.number="c1.HSL[2]" v-on:input="translateHSL('c1')">
@@ -47,17 +49,20 @@
     <hr>
     <button type="button" name="button" @click="debug('c2')">Debug</button>
     <hr>
-    <div class="swatch" :style="paint('c1')"></div>
-    <div class="swatch" :style="paint('c1', 'alpha')"></div>
+    <div class="palette">
+      <div class="swatch" :style="paint(c1)"></div>
+      <div class="swatch" :style="paint(c1, 'alpha')"></div>
+    </div>
     <hr>
-    <div class="swatch" :style="paint('c2')"></div>
-    <div class="swatch" :style="paint('c2', 'alpha')"></div>
+    <div class="palette">
+      <div class="swatch" :style="paint(c2)"></div>
+      <div class="swatch" :style="paint(c2, 'alpha')"></div>
+    </div>
     <hr>
     <button type="button" name="button" @click="interpolate('c1', 'c2')">Interpolate</button>
     <hr>
     <div class="palette">
-      <div class="swatch" v-for="(color, index) in palette">{{ color }}</div>
-      <div class="swatch" v-for="(color, index) in palette" :style="pain(color, 'alpha')"></div>
+      <div class="swatch" v-for="(color, index) in palette" :style="paint(color, 'alpha')"></div>
     </div>
   </div>
 

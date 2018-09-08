@@ -5,16 +5,29 @@ var exercise = new Vue({
       HSL : [40, 80, 80],
       RGB : [],
       HEX : '',
-      A : 0.8
+      A : 1.0
     },
     c2 : {
       HSL : [120, 40, 80],
       RGB : [],
       HEX : '',
-      A : 0.4
+      A : 1.0
     },
     palette : [],
     interpolations: 8,
+  },
+  computed: {
+    generation: function() {
+      this.interpolate(this.c1, this.c2);
+    }
+  },
+  watch: {
+    c1: function() {
+      this.interpolate(this.c1, this.c2);
+    },
+    c2: function() {
+      this.interpolate(this.c1, this.c2);
+    }
   },
   methods: {
     debug: function(c) {
@@ -48,17 +61,12 @@ var exercise = new Vue({
     paint: function(c, a) {
       if (a == 'alpha') {
         return {
-          'background-color' : this[c].HEX
+          'background-color' : c.HEX
         }
       } else {
         return {
-          'background-color' : 'rgba(' + this[c].RGB[0] + ',' + this[c].RGB[1] + ',' + this[c].RGB[2] + ',' + this[c].A + ')'
+          'background-color' : 'rgba(' + c.RGB[0] + ',' + c.RGB[1] + ',' + c.RGB[2] + ',' + c.A + ')'
         }
-      }
-    },
-    pain: function(c) {
-      return {
-        'background-color' : 'rgba(' + c.RGB[0] + ',' + c.RGB[1] + ',' + c.RGB[2] + ',' + c.A + ')'
       }
     },
     interpolate: function(c1, c2) {
@@ -86,8 +94,8 @@ var exercise = new Vue({
           A : a
         });
       }
-
       console.log(this.palette.length);
+      console.log(this.palette);
     }
   }
 });
