@@ -16,18 +16,24 @@ var exercise = new Vue({
     palette : [],
     interpolations: 8,
   },
-  computed: {
-    generation: function() {
-      this.interpolate(this.c1, this.c2);
-    }
-  },
   watch: {
-    c1: function() {
-      this.interpolate(this.c1, this.c2);
+    palette: function() {
+      console.log('Palette is changed.');
     },
-    c2: function() {
-      this.interpolate(this.c1, this.c2);
-    }
+    c1: {
+      handler: function(value) {
+        console.log('C1 is changed.');
+        //this.interpolate(this.value, this.c2);
+      },
+      deep: true
+    },
+    c2: {
+      handler: function() {
+        console.log('C2 is changed.');
+        //this.interpolate(this.c1, this.c2);
+      },
+      deep: true
+    },
   },
   methods: {
     debug: function(c) {
