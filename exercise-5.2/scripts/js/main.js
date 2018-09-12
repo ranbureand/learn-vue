@@ -1,4 +1,4 @@
-var exercise1 = new Vue({
+var exercise = new Vue({
   el: '#exercise',
   data: {
     message: 'Hello world!'

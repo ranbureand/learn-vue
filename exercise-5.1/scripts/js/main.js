@@ -8,6 +8,6 @@ Vue.component('hello-world', {
 // define a component and its template
 // a template needs to have just one root element
 
-var exercise1 = new Vue({
+var exercise = new Vue({
   el: '#exercise'
 });

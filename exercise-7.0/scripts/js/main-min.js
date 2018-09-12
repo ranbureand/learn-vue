@@ -1,0 +1,1 @@
+Vue.component("the-status",{data:function(){return{status:"dangerous"}},template:'<p>The situation is {{ status }} <button @click="revertStatus">Revert</button>.</p>',methods:{revertStatus:function(){this.status="safe"}}});var exercise=new Vue({el:"#exercise"});
