@@ -7,15 +7,10 @@
         <button type="button" name="button" @click="selectedComponent = 'newQuotation'">New Quotation</button>
         <p>{{ selectedComponent }}</p>
         <hr>
-        <!--<quotation quotationBody="This is a quotation."></quotation>-->
-        <quotation>
-          <h1 slot="head">{{ quotationHead }}</h1>
-          <!--<p slot="body">{{ quotationBody }}</p>-->
-          <p>{{ quotationBody }}</p>
-          <p>— {{ quotationSource }}</p>
-          <!-- the above content is rendered in place of the tag "<slot>" in the component -->
-
-        </quotation>
+        <keep-alive>
+          <component :is="selectedComponent"></component>
+        </keep-alive>
+        <!-- "keep-alive" makes sure that the component is not destroyed -->
       </div>
     </div>
   </div>
